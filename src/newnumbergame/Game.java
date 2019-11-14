@@ -1,8 +1,8 @@
 package newnumbergame;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -11,38 +11,39 @@ import java.awt.Point;
 public class Game {
 
     Grid grid = new Grid();
-    int x0, y0;
+    private int x0, y0;
 
-    Game(boolean keys) {
-        grid.add2or4();
+    Game() {
         grid.add2or4();
     }
 
     void nextFrame(Point mouse) {
-
+        grid.nextFrame();
     }
 
     void draw(Graphics g) {
-        g.setColor(Color.black);
-                for (int x = 100; x <= 300; x += 100) {
-            g.drawLine(x, 0, x, 400);
-            g.drawLine(0, x, 400, x);
-        }
         grid.drawGrid(g);
     }
 
-
-    void mousePressed(int x, int y) {
-        x0 = x;
-        y0 = y; 
+    void keyPressed(int key) {
+        switch (key){
+            case KeyEvent.VK_W:
+                grid.setDirection(0, -1);
+                break;
+            case KeyEvent.VK_S:
+                grid.setDirection(0, 1);
+                break;
+            case KeyEvent.VK_A:
+                grid.setDirection(-1, 0);
+                break;
+            case KeyEvent.VK_D:
+                grid.setDirection(1, 0);
+                break;    
+        }
     }
 
-    void mouseReleased(int x, int y) {
-       int dx = x - x0;
-        int dy = y - y0;
-        grid.setDirection(dx, dy);
+    void keyReleased(int key) {
+        
     }
-
-
 
 }

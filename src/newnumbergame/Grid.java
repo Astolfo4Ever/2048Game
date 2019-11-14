@@ -24,13 +24,22 @@ class Grid {
         do {
             ix = (int) (random() * 4);
             iy = (int) (random() * 4);
-        } while ()
+        } while (occupied( ix, iy));
                 
         int value = 2;
         if(random()>03) value = 4;
+        list.add(new Tile(ix * 100, iy * 100, value));
     }
     
-    boolean 
+    private boolean occupied (int ix, int iy) {
+        boolean ans;
+        if (ix == 0) {
+            ans = true;
+        } else {
+            ans = false;
+        }
+        return ans;
+    } 
     
     void nextFrame(){
         for (Tile t : list) {

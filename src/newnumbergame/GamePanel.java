@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package newnumbergame;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -19,17 +16,18 @@ import javax.swing.JPanel;
  *
  * @author G.I Buttwipere
  */
-class GamePanel extends JPanel implements MouseListener, MouseMotionListener, Serializable {
+class GamePanel extends JPanel implements MouseListener, MouseMotionListener, Serializable, KeyListener{
     
-    boolean keys;
-
-    Game game = new Game(keys);
+    Game game = new Game();
     Point mouse = new Point();
+    
 
     public GamePanel() {
         setPreferredSize(new Dimension(400, 400));
         addMouseListener(this);
+        addKeyListener(this);
         addMouseMotionListener(this);
+        setFocusable(true);
     }
 
     void nextFrame() {
@@ -49,13 +47,13 @@ class GamePanel extends JPanel implements MouseListener, MouseMotionListener, Se
 
     @Override
     public void mousePressed(MouseEvent e) {
-        game.mousePressed(e.getX(), e.getY());
+       // game.mousePressed(e.getX(), e.getY());
         
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        game.mouseReleased(e.getX(), e.getY());
+       // game.mouseReleased(e.getX(), e.getY());
     }
 
     @Override
@@ -76,6 +74,23 @@ class GamePanel extends JPanel implements MouseListener, MouseMotionListener, Se
     @Override
     public void mouseMoved(MouseEvent e) {
         
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+        game.keyPressed(key);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        int key = e.getKeyCode();
+        game.keyReleased(key);
     }
 
 }

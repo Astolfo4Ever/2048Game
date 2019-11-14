@@ -17,8 +17,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -37,9 +35,9 @@ public class NumberGame extends JFrame {
     public NumberGame() throws HeadlessException {
         setContentPane(panel);
         fixMenu();
-        pack();
         setTitle(TITLE);
         setResizable(false);
+        pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
         run();
@@ -69,6 +67,7 @@ public class NumberGame extends JFrame {
         JMenuItem aboutItem = new JMenuItem("About");
         JMenuItem aboutHTMLJFramePopup = new JMenuItem("aboutJFrame");
 
+        
         JMenu save = new JMenu("Save");
         JMenuItem saveItem = new JMenuItem("Save");
 
